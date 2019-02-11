@@ -13,7 +13,6 @@ RSpec.describe User, type: :model do
       expect(@user).to be_a(User)
       expect(@user).to be_valid
     end
-
   end
 
 end

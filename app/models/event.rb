@@ -2,6 +2,7 @@ class Event < ApplicationRecord
 
   belongs_to :administrator, class_name: "User"
   has_many :attendances
+  has_many :guests, class_name: "User", through: :attendances
 
   validates :start_date,
   presence: true
@@ -16,7 +17,7 @@ class Event < ApplicationRecord
 
   validates :description,
   presence: true,
-  length: { minimum: 20, maximum: 1000 }
+  length: { minimum: 10, maximum: 1000 }
 
   validates :price,
   presence: true,

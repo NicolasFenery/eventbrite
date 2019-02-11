@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 
-  before(:each) do 
-    @user = User.create(email: "john@doe.com", encrypted_password: 0123456, description: "John Doe, lives in Paris, loves paris brest", first_name: "John", last_name: "Doe")
-    @event = Event.create(start_date: "Tue, 23 Apr 2019 00:00:00 +0000", duration: 100, title: "Evenement de baguettes", description: "Grosses baguettes bien cuites et bien dures", price: 30, location: "Paris", administrator_id: @user)
+  before(:each) do
+    michel = User.create(first_name: "MicheL", last_name: "Polnareff", email: "michelpolnareff@teuteu.fr", description: "Je chante bien sous ma douche")
+    gilbert = User.create(first_name: "Gilbert", last_name: "Montagné", email: "gilbertmontagne@teuteu.fr", description: "Je chante les yeux fermés et les doigts dans le nez")
+    @event = Event.create(start_date: "Tue, 23 Apr 2019 00:00:00 +0000", duration: 100, title: "Evenement de baguettes", description: "Grosses baguettes bien cuites et bien dures", price: 30, location: "Paris", administrator: michel)
+    attendance_1 = Attendance.create(stripe_customer_id: "bonjour", guest: gilbert, event: @event)
   end
 
   context "validation" do
@@ -53,8 +55,8 @@ RSpec.describe Event, type: :model do
 
     describe "attendances" do
       it "should have_many attendances" do
-        attendances = Attendance.create(event: @event)
-        expect(@event.attendance.include?(attendance)).to eq(true)
+        attendance = Attendance.create(event: @event)
+        expect(@event.attendances.include?(attendance)).to eq(@event)
       end
     end
   end

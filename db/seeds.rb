@@ -13,11 +13,11 @@ Attendance.destroy_all
 
 
 10.times do
-  user = User.create!(email: Faker::Internet.email, encrypted_password: Faker::Number.number(7), description: Faker::MichaelScott.quote, first_name: Faker::HarryPotter.character, last_name: Faker::HarryPotter.character)
+  user = User.create!(email: Faker::Internet.email, encrypted_password: Faker::Number.number(7), description: Faker::Shakespeare.hamlet_quote, first_name: Faker::HarryPotter.character, last_name: Faker::HarryPotter.character)
 end
 
 10.times do
-  event = Event.create!(start_date: Faker::Date.forward(5), duration: Faker::Number.number(3), title: Faker::HarryPotter.character, description: Faker::MichaelScott.quote, price: Faker::Number.number(2), location: Faker::Address.city, administrator_id: User.all.sample.id)
+  event = Event.create!(start_date: Faker::Date.forward(5), duration: Faker::Number.number(3), title: Faker::Shakespeare.hamlet_quote, description: Faker::Shakespeare.hamlet_quote, price: Faker::Number.number(2), location: Faker::Address.city, administrator_id: User.all.sample.id)
 end
 
 20.times do
