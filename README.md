@@ -1,24 +1,14 @@
-# README
+# EventBrite
+Envoie de mails avec Action Mailer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Etapes 👨‍🍳
+- préchauffer le terminal avec : git clone
+- préparer le bol et le fouet avec : bundle install
+- mélanger les ingrédients avec : rails db:create
+- ne pas oublier la pincée de sel avec : rails db:migrate
+- cuire au four pendant 30 minutes avec : rails db:migrate
+- sortir du four avec : rails db:seed
+- déguster avec : rspec 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Réalisé par :fire:
+Nicolas & Manon
