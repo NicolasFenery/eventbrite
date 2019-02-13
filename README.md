@@ -10,5 +10,8 @@ Envoie de mails avec Action Mailer
 - sortir du four avec : rails db:seed
 - déguster avec : rspec 
 
+## Heroku App
+https://eventbritemn.herokuapp.com/
+
 ## Réalisé par :fire:
 Nicolas & Manon
