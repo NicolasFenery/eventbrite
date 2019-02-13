@@ -1,15 +1,94 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Swagevent</title>
+    <title>Moussaillonsante</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
 
   <body>
+
+     <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white shadow">
+    <div class="container">
+      <a class="navbar-brand text-info" href="<%= root_path %>">Eventbrite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_event_path %>">Créer un évenement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= users_path %>">Mon Profil</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link text-info mr-2" %>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_user_session_path %>">Se connecter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_user_registration_path %>">S'inscrire</a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <%= yield %>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="container">
+    <div class="row">
+      <div class="col-12 col-md">
+        <small class="d-block mb-3 text-muted">&copy; 2018-2019</small>
+      </div>
+      <div class="col-3">
+        <h5 class="text-info">Menu</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="<%= root_path%>">Accueil </a></li>
+          <li><a class="text-muted" href="<%= new_event_path%>">Créer un évenement </a></li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h5 class="text-info">Espace Membre</h5>
+        <ul class="list-unstyled text-small">
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_event_path %>">Créer un évenement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= users_path %>">Mon Profil</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link text-info mr-2" %>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_user_session_path %>">Se connecter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_user_registration_path %>">S'inscrire</a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   </body>
 </html>

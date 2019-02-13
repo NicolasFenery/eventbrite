@@ -1,0 +1,27 @@
+<div class="mx-auto text-center">
+	<div class="jumbotron">
+	  <h1 class="display-4">Eventbrite</h1>
+	  <p class="lead">Trouve ton prochain évenement préféré</p>
+	  <button type="button" class="btn"><%= link_to "Clique Ici pour créer un évenement", new_event_path , class: "btn
+			    btn-md btn-outline-primary" %></button>
+	</div>
+</div>
+
+<h2 class="text-center mb-3">Liste des évenements</h2>
+
+<div class="container">
+	<div class="card-deck mb-4 text-center">
+		<% @events.each do |event| %>
+		<div class="col-md-4">
+			<div class="card border border-primary mt-3 shadow-sm" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title mb-3"><%= event.title %></h5>
+			    <h6 class="card-subtitle mb-5 text-muted"><%= event.administrator.first_name %></h6>
+			    <button type="button" class="btn"><%= link_to "Voir l'évenement", event_path(event.id), class: "btn
+			    btn-md btn-primary" %></button>
+			  </div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

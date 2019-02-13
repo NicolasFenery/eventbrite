@@ -13,7 +13,7 @@ Attendance.destroy_all
 
 
 10.times do
-  user = User.create!(email: Faker::Internet.email, encrypted_password: Faker::Number.number(7), description: Faker::Shakespeare.hamlet_quote, first_name: Faker::HarryPotter.character, last_name: Faker::HarryPotter.character)
+  user = User.create!(email: Faker::Internet.email, password: '1234567', password_confirmation: '1234567', description: Faker::Shakespeare.hamlet_quote, first_name: Faker::HarryPotter.character, last_name: Faker::HarryPotter.character)
 end
 
 10.times do

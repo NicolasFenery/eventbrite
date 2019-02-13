@@ -1,0 +1,75 @@
+<div class="mx-auto mt-3 py-3" style="width: 600px;">
+<h1>Évenement</h1>
+</div>
+
+<div class="mx-auto py-3" style="width: 600px;">
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Évenement</th>
+      <td><%= @event.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Organisateur</th>
+      <td><%=  link_to "#{@event.administrator.first_name}", user_path %></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><%= @event.description %></td>
+    </tr>
+    <tr>
+      <th scope="row">Nombre de partipants</th>
+      <td><%= @event.guests.count %></td>
+    </tr>
+    <tr>
+      <th scope="row">Créateur</th>
+      <td><%= @event.administrator.email %></td>
+    </tr>
+     <tr>
+      <th scope="row">Date</th>
+      <td><%= @event.start_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Lieu</th>
+      <td><%= @event.location %></td>
+    </tr>
+    <tr>
+      <th scope="row">Prix</th>
+      <td><%= @event.price %>€</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="mx-auto py-3" style="width: 600px;">
+  <% unless current_user == @event.guests || current_user == @event.administrator %>
+
+      <%= form_tag  do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+          <% end %>
+          <label class="amount">
+            <span>Prix: € <%= @event.price %></span>
+          </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Participation à l'évenement"
+              data-amount="<%= @event.price * 100 %>"
+              data-currency="eur"
+              data-locale="auto"></script>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="mx-auto py-3" style="width: 600px;">
+  <% if current_user == @event.administrator %>
+    <button class="btn btn-outline-primary "><%= link_to "Voir invités", attendance_path(@event.id) %></button>
+  <% end %>
+</div>
+
+

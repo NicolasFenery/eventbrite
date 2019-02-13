@@ -1,2 +1,28 @@
-<h1>Attendances#show</h1>
-<p>Find me in app/views/attendances/show.html.erb</p>
+<% if @event.attendances.count == 0 %>
+<h2 class="text-center my-5 mb-3">Il n'y a pas encore de participants à cet évenement</h2>
+
+<% else %>
+
+<h2 class="text-center mt-3 mb-3">Livre des Invités</h2>
+
+<div class="container">
+  <div class="card-deck mb-4 text-center">
+    <% @event.attendances.each do |attendance| %>
+    <div class="col-md-4">
+      <div class="card border border-primary mt-3 shadow-sm" style="width: 18rem;">
+        <div class="card-body">
+          <h4 class="card-subtitle mb-5 text-muted"><%= attendance.guest.first_name %></h4>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<% end %>
+
+<div class="mx-auto py-3" style="width: 600px;">
+  <% if current_user == @event.administrator %>
+    <button class="btn btn-outline-primary "><%= link_to "Modifier l'évenement", edit_event_path(@event.id) %></button>
+  <% end %>
+</div>

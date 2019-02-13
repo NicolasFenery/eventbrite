@@ -1,2 +1,41 @@
-<h1>Attendances#new</h1>
-<p>Find me in app/views/attendances/new.html.erb</p>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Participer à l'évent</h5>
+            <%= form_tag url_for(action: 'create'), method: "post", class: "form-signin" do %>
+
+             <div class="form-label-group">
+            	<%= text_field_tag 'title', @title, class: "form-control", id: "inputTitle", placeholder: "Titre", :required => true  %>
+      		</div>
+
+      		<div class="form-label-group">
+                <%= text_field_tag 'description', @description, class: "form-control", id: "inputDescription", placeholder: "Description", :required => true  %>
+              </div>
+
+      		<div class="form-label-group">
+            	<%= text_field_tag 'start_date', @start_date, class: "form-control", id: "inputStart_date", placeholder: "Date", :required => true %>
+      		</div>
+
+      		<div class="form-label-group">
+            	<%= text_field_tag 'duration', @duration, class: "form-control", id: "inputDuration", placeholder: "Durée", :required => true  %>
+      		</div>
+
+      		<div class="form-label-group">
+                <%= text_field_tag 'price', @price, class: "form-control", id: "inputPrice", placeholder: "Prix", :required => true  %>
+              </div>
+
+      		<div class="form-label-group">
+            	<%= text_field_tag 'location', @location, class: "form-control", id: "inputLocation", placeholder: "Lieu", :required => true %>
+      		</div>
+
+      		<div class="form-group">
+            	<%= submit_tag "Je participe", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+      		</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>	
+</div>
