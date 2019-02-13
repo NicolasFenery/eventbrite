@@ -20,12 +20,6 @@ class AttendancesController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def update
-  end
-
-  def destroy
-  end
-
   def index
     @attendances = Attendance.all
   end

@@ -10,10 +10,6 @@
       <td><%= @event.title %></td>
     </tr>
     <tr>
-      <th scope="row">Organisateur</th>
-      <td><%=  link_to "#{@event.administrator.first_name}", user_path %></td>
-    </tr>
-    <tr>
       <th scope="row">Description</th>
       <td><%= @event.description %></td>
     </tr>
@@ -68,7 +64,8 @@
 
 <div class="mx-auto py-3" style="width: 600px;">
   <% if current_user == @event.administrator %>
-    <button class="btn btn-outline-primary "><%= link_to "Voir invités", attendance_path(@event.id) %></button>
+    <button type="button" class="btn"><%= link_to "Voir les participants", attendance_path(@event.id), class: "btn
+          btn-lg btn-info" %></button>
   <% end %>
 </div>
 

@@ -57,16 +57,17 @@
         <h5 class="text-info">Menu</h5>
         <ul class="list-unstyled text-small">
           <li><a class="text-muted" href="<%= root_path%>">Accueil </a></li>
-          <li><a class="text-muted" href="<%= new_event_path%>">Créer un évenement </a></li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link text-info mr-2" href="<%= new_event_path %>">Créer un évenement</a>
+          </li>
+        <% end %>
         </ul>
       </div>
       <div class="col-3">
         <h5 class="text-info">Espace Membre</h5>
         <ul class="list-unstyled text-small">
           <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link text-info mr-2" href="<%= new_event_path %>">Créer un évenement</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link text-info mr-2" href="<%= users_path %>">Mon Profil</a>
           </li>

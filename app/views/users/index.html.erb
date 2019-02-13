@@ -1,1 +1,46 @@
-<h1>Bjr</h1>
+<div class="mx-auto mt-3 py-3" style="width: 600px;">
+<h1>Profil Utilisateur</h1>
+</div>
+
+<div class="mx-auto py-3" style="width: 600px;">
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Prénom</th>
+      <td><%= current_user.first_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Nom</th>
+      <td><%= current_user.last_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><%= current_user.description %></td>
+    </tr>
+     <tr>
+      <th scope="row">Mail</th>
+      <td><%= current_user.email %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="mx-auto mt-3 py-3" style="width: 600px;">
+<h1>Évenement(s) de cet utilisateur</h1>
+</div>
+
+<div class="container">
+	<div class="card-deck mb-4 text-center">
+		<% current_user.events.each do |event| %>
+		<div class="col-md-4">
+			<div class="card border border-primary mt-3 shadow-sm" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title mb-3"><%= event.title %></h5>
+			    <button type="button" class="btn"><%= link_to "Voir l'évenement", event_path(event.id), class: "btn
+			    btn-md btn-info" %></button>
+			  </div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

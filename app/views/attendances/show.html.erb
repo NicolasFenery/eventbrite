@@ -23,6 +23,7 @@
 
 <div class="mx-auto py-3" style="width: 600px;">
   <% if current_user == @event.administrator %>
-    <button class="btn btn-outline-primary "><%= link_to "Modifier l'évenement", edit_event_path(@event.id) %></button>
+    <button type="button" class="btn"><%= link_to "Modifier l'évenement", edit_event_path(@event.id), class: "btn
+          btn-lg btn-info" %></button>
   <% end %>
 </div>

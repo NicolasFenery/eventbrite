@@ -2,8 +2,10 @@
 	<div class="jumbotron">
 	  <h1 class="display-4">Eventbrite</h1>
 	  <p class="lead">Trouve ton prochain évenement préféré</p>
+	  <% if user_signed_in? %>
 	  <button type="button" class="btn"><%= link_to "Clique Ici pour créer un évenement", new_event_path , class: "btn
-			    btn-md btn-outline-primary" %></button>
+			    btn-lg btn-outline-info" %></button>
+	  <% end %>
 	</div>
 </div>
 
@@ -17,8 +19,13 @@
 			  <div class="card-body">
 			    <h5 class="card-title mb-3"><%= event.title %></h5>
 			    <h6 class="card-subtitle mb-5 text-muted"><%= event.administrator.first_name %></h6>
+			    <% if user_signed_in? %>
 			    <button type="button" class="btn"><%= link_to "Voir l'évenement", event_path(event.id), class: "btn
-			    btn-md btn-primary" %></button>
+			    btn-md btn-info" %></button>
+			    <% else %>
+			    <button type="button" class="btn"><%= link_to "Voir l'évenement", new_user_session_path, class: "btn
+			    btn-md btn-info" %></button>
+			    <% end %>
 			  </div>
 			</div>
 		</div>

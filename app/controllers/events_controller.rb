@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @event.administrator = current_user
 
     if @event.save
-      redirect_to root_path
+      redirect_to @event
     else
       render 'new'
     end
