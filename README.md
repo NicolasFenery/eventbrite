@@ -1,14 +1,22 @@
 # EventBrite
-Envoie de mails avec Action Mailer
+EventBrite
+
+## Tester en local
+- On a un problème, l'app est en production mais à partir du moment où tu veux t'inscrire, il y a un problème avec Heroku
+- Pourtant l'app fonctionne entièrement en local donc pour tout tester, il faut passer en local
 
 ## Etapes 👨‍🍳
-- préchauffer le terminal avec : git clone
-- préparer le bol et le fouet avec : bundle install
-- mélanger les ingrédients avec : rails db:create
-- ne pas oublier la pincée de sel avec : rails db:migrate
-- cuire au four pendant 30 minutes avec : rails db:migrate
-- sortir du four avec : rails db:seed
-- déguster avec : rspec 
+- git clone
+- bundle install
+- rails db:drop
+- rails db:create
+- rails db:migrate
+- rails db:seed si tu veux faire un seed
+- rails server
+- http://localhost:3000/
+
+## Pour tester la Date pour créer un event
+Utilise une date dans ce genre : Tue, 23 Apr 2019 00:00:00 +0000
 
 ## Heroku App
 https://eventbritemn.herokuapp.com/
